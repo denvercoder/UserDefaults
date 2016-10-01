@@ -13,6 +13,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let phoneNumberObject = UserDefaults.standard.object(forKey: "phone")
+        
+        if let phoneNumber = phoneNumberObject as? String {
+            phoneNumberField.text = phoneNumber
+            print(phoneNumberField.text)
+            print(phoneNumber)
+        }
+        
+        
+    }
+    @IBOutlet weak var phoneNumberField: UITextField!
+    
+    
+    @IBAction func saveNumberDidClick(_ sender: AnyObject) {
+        UserDefaults.standard.set(phoneNumberField.text, forKey: "phone")
+        print("phone number after save: \(phoneNumberField.text)")
     }
 
     override func didReceiveMemoryWarning() {
